@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <!-- ==================== MÉTA-DONNÉES ==================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Rayan Guyot, étudiant en BTS SIO option SLAM à Toulouse. Développeur en formation passionné par le web et les applications métiers." />
+  <meta name="keywords" content="Rayan Guyot, BTS SIO, SLAM, développeur, portfolio, Toulouse, E6, parcours de professionnalisation" />
+  <meta name="author" content="Rayan Guyot" />
+
+  <!-- Open Graph (partage sur réseaux sociaux) -->
+  <meta property="og:title" content="Rayan Guyot — Portfolio BTS SIO SLAM" />
+  <meta property="og:description" content="Développeur en formation, passionné par le web et la création d'applications métiers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <title>Rayan Guyot — Portfolio BTS SIO SLAM</title>
+
+  <!-- Favicon SVG inline : initiales R.G. minimalistes -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FFFFFF'/%3E%3Ctext x='50' y='65' font-family='Helvetica,Arial,sans-serif' font-size='52' font-weight='700' text-anchor='middle' fill='%230A0A0A' letter-spacing='-2'%3ER%3C/text%3E%3Crect x='62' y='58' width='6' height='6' fill='%230066FF'/%3E%3C/svg%3E" />
+
+  <!-- Police unique : Inter Tight (300 / 400 / 500 / 700) — esprit Helvetica moderne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==================== VARIABLES CSS : DEUX THÈMES ==================== */
+    /* Style Suisse : 3 couleurs maximum (blanc, noir, un accent fonctionnel) */
+
+    /* Thème clair (par défaut) : blanc pur + noir + bleu vif unique */
+    :root,
+    [data-theme="light"] {
+      --bg: #FFFFFF;
+      --bg-soft: #FAFAFA;
+      --bg-line: #EFEFEF;
+      --text: #0A0A0A;
+      --text-muted: #555555;
+      --text-dim: #999999;
+      --rule: #0A0A0A;
+      --rule-soft: #E5E5E5;
+      --accent: #0066FF;       /* L'unique couleur fonctionnelle */
+      --accent-soft: rgba(0, 102, 255, 0.08);
+    }
+
+    /* Thème sombre : inversion stricte des valeurs, accent bleu légèrement éclairci */
+    [data-theme="dark"] {
+      --bg: #0A0A0A;
+      --bg-soft: #131313;
+      --bg-line: #1A1A1A;
+      --text: #F5F5F5;
+      --text-muted: #A8A8A8;
+      --text-dim: #6B6B6B;
+      --rule: #F5F5F5;
+      --rule-soft: #2A2A2A;
+      --accent: #4D8FFF;
+      --accent-soft: rgba(77, 143, 255, 0.10);
+    }
+
+    /* ==================== RESET & BASE ==================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      /* Police unique sur tout le site — discipline typographique du style suisse */
+      font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* La hiérarchie passe par les poids (300 / 500 / 700), pas par les couleurs */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: inherit;
+      color: var(--text);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+    }
+
+    /* ==================== LAYOUT GÉNÉRAL ==================== */
+    /* Grille fluide centrée, largeur contenue pour respecter la mesure typographique */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    /* En-tête de section : numéro + lignes de séparation strictes */
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      align-items: end;
+    }
+
+    .section-num {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .section-num b {
+      color: var(--text);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 300;        /* Le contraste poids 300/700 est la signature du style */
+      letter-spacing: -0.03em;
+    }
+
+    .section-title b {
+      font-weight: 700;
+    }
+
+    .section-meta {
+      margin-top: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      font-weight: 400;
+    }
+
+    /* ==================== NAVIGATION ==================== */
+    /* Nav minimale, filet horizontal en bas, indices numérotés */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--rule-soft);
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo b {
+      color: var(--accent);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text);
+    }
+
+    .nav-menu .num-prefix {
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      margin-right: 0.3rem;
+      font-weight: 500;
+    }
+
+    /* Bouton de bascule de thème — simple carré, pas rond, esprit suisse */
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rule-soft);
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .theme-toggle svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="light"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: block; }
+
+    /* Menu hamburger mobile */
+    .nav-burger {
+      display: none;
+      width: 32px;
+      height: 32px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-burger span {
+      width: 18px;
+      height: 1.5px;
+      background-color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    /* ==================== HERO ==================== */
+    /* Mise en page asymétrique : nom à gauche grand, photo + meta à droite */
+    .hero {
+      min-height: 100vh;
+      padding: 9rem 0 4rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      width: 100%;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    /* Petit marqueur de disponibilité minimal */
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hero-status::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+
+    .hero-line-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule-soft);
+      font-weight: 500;
+    }
+
+    /* Le nom : énorme, poids 300, contraste avec le 700 sur le nom de famille */
+    .hero-name {
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-name b {
+      font-weight: 700;
+    }
+
+    .hero-pitch {
+      font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .hero-objective {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Boutons style suisse : un soulignement bleu, pas de fond, hover net */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border-bottom: 1.5px solid var(--accent);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      color: var(--accent);
+      gap: 0.9rem;          /* L'écart augmente subtilement au survol */
+    }
+
+    .btn-primary {
+      color: var(--accent);
+    }
+
+    .btn .arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(2px);
+    }
+
+    /* Bloc photo + métadonnées à droite du hero */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-end;
+    }
+
+    .hero-photo {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      filter: grayscale(100%);   /* Photo en noir et blanc, sobriété éditoriale */
+      transition: filter 0.35s ease;
+    }
+
+    .hero-photo:hover {
+      filter: grayscale(0%);
+    }
+
+    .hero-meta {
+      text-align: right;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      line-height: 1.8;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hero-meta b {
+      display: inline-block;
+      color: var(--text);
+      font-weight: 700;
+      min-width: 30px;
+      text-align: left;
+      margin-right: 0.4rem;
+    }
+
+    /* ==================== À PROPOS ==================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.3rem;
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Liste numérotée des qualités — pure typographie, pas de cards */
+    .qualities {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quality {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule-soft);
+      align-items: baseline;
+    }
+
+    .quality:last-child {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .quality-num {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .quality-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .quality-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ==================== TIMELINE PARCOURS ==================== */
+    /* Format éditorial : dates à gauche en petit, contenu à droite — pas de points décoratifs */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule-soft);
+      align-items: baseline;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .timeline-main h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-main p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-status {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .timeline-status::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      transform: translateY(-1px);
+    }
+
+    /* ==================== COMPÉTENCES ==================== */
+    /* Pas de cards bordées — seulement des catégories et des tags texte alignés */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 4rem;
+    }
+
+    .skill-group {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .skill-group h3 {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-group h3 b {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.5rem;
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      position: relative;
+      cursor: default;
+      transition: color 0.2s ease;
+    }
+
+    .skill-list li:hover {
+      color: var(--accent);
+    }
+
+    /* ==================== MATRICE RÉFÉRENTIEL ==================== */
+    /* Tableau ultra-épuré, alignement strict, lignes fines */
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .matrix th {
+      text-align: left;
+      padding: 1rem 1rem 1rem 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 500;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .matrix th:last-child {
+      text-align: right;
+      padding-right: 0;
+    }
+
+    .matrix td {
+      padding: 1.1rem 1rem 1.1rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      vertical-align: top;
+    }
+
+    .matrix td:first-child {
+      font-weight: 600;
+      width: 38%;
+      letter-spacing: -0.005em;
+    }
+
+    .matrix td:nth-child(2) {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .matrix td:last-child {
+      text-align: right;
+      padding-right: 0;
+      white-space: nowrap;
+    }
+
+    /* Indicateur de niveau : 3 carrés (couleur progressive) */
+    .level {
+      display: inline-flex;
+      gap: 3px;
+      align-items: center;
+    }
+
+    .level span {
+      width: 11px;
+      height: 11px;
+      background-color: var(--rule-soft);
+      display: inline-block;
+    }
+
+    .level span.on {
+      background-color: var(--accent);
+    }
+
+    /* ==================== FICHES E6 ==================== */
+    .e6-notice {
+      padding: 1.25rem 1.5rem;
+      background-color: var(--accent-soft);
+      border-left: 2px solid var(--accent);
+      margin-bottom: 3rem;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .e6-notice b {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .e6-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+    }
+
+    .fiche-e6 {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1.5rem;
+      border-top: 2px solid var(--rule);
+    }
+
+    .fiche-number {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .fiche-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.015em;
+    }
+
+    .fiche-block {
+      margin-bottom: 1.25rem;
+    }
+
+    .fiche-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .fiche-content {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .fiche-competences {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .fiche-competence {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .fiche-link {
+      margin-top: auto;
+      padding-top: 2rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-bottom: 1.5px solid var(--accent);
+      color: var(--text);
+      width: fit-content;
+    }
+
+    /* ==================== PROJETS ==================== */
+    /* Format liste éditoriale : numéro, titre, description et tags */
+    .projects {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 60px 1fr 200px;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule-soft);
+      align-items: start;
+      transition: padding-left 0.25s ease;
+    }
+
+    .project:last-child {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .project:hover {
+      padding-left: 0.5rem;
+    }
+
+    .project-num {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 500;
+      padding-top: 0.3rem;
+    }
+
+    .project-main h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.2rem;
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .project-detail {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0.5rem 1rem;
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-detail dt {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .project-detail dd {
+      color: var(--text-muted);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .project-tags span::before {
+      content: '·';
+      color: var(--accent);
+      margin-right: 0.5rem;
+      font-weight: 700;
+    }
+
+    .project-tags span:first-child::before {
+      display: none;
+    }
+
+    .project-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: flex-end;
+      font-size: 0.88rem;
+    }
+
+    .project-link {
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      font-weight: 500;
+    }
+
+    /* ==================== STAGES ==================== */
+    .internships {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .internship {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .internship:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .internship-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .internship-date b {
+      display: block;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .internship-main h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.015em;
+    }
+
+    .internship-role {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .internship-mission {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      max-width: 640px;
+    }
+
+    .internship-mission b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .internship-skills-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ==================== CERTIFICATIONS PIX ==================== */
+    .certifs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .certif {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .certif-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.8rem 1.4rem;
+      border: 1px solid var(--text);
+      min-width: 90px;
+    }
+
+    .certif-score-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .certif-score-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .certif-info h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .certif-detail {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .certif-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.4rem;
+    }
+
+    /* ==================== VEILLE ==================== */
+    .veille {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .veille-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .veille-meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .veille-meta div b {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .veille-content h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.025em;
+      max-width: 560px;
+      line-height: 1.15;
+    }
+
+    .veille-content p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 580px;
+    }
+
+    .veille-sources {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .veille-sources b {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    /* ==================== MÉTHODOLOGIE ==================== */
+    .method {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 4rem;
+    }
+
+    .method-card {
+      padding: 1.75rem 1.5rem;
+      border-right: 1px solid var(--rule-soft);
+    }
+
+    .method-card:last-child {
+      border-right: none;
+    }
+
+    .method-num {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .method-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .method-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Réflexion : citation au format éditorial */
+    .reflection {
+      max-width: 760px;
+      padding: 3rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .reflection p {
+      font-size: 1.15rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+    }
+
+    .reflection p:last-child {
+      margin-bottom: 0;
+    }
+
+    .reflection b {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Stats GitHub : grille de 3 chiffres alignés sur ligne supérieure */
+    .github-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .github-stat {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--rule-soft);
+    }
+
+    .github-stat:last-child {
+      border-right: none;
+    }
+
+    .github-stat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .github-stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ==================== CONTACT ==================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--rule-soft);
+      align-items: baseline;
+      transition: padding-left 0.25s ease;
+    }
+
+    .contact-item:last-of-type {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .contact-item.is-link:hover {
+      padding-left: 0.4rem;
+    }
+
+    .contact-item.is-link:hover .contact-value {
+      color: var(--accent);
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-arrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* Formulaire de contact épuré */
+    .contact-form {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .form-intro {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      padding-left: 0.8rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .form-intro b {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.6rem 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rule-soft);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-bottom-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      transition: gap 0.2s ease;
+      cursor: pointer;
+    }
+
+    .form-submit:hover {
+      gap: 1rem;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--rule);
+      margin-top: 6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-block h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-block p,
+    .footer-block a {
+      font-size: 0.9rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule-soft);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links button {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links button:hover {
+      color: var(--accent);
+    }
+
+    /* ==================== MODALES ==================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 10, 0.55);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      background-color: var(--bg);
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 3rem;
+      border: 1px solid var(--rule);
+      transform: translateY(10px);
+      transition: transform 0.25s ease;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rule-soft);
+      font-size: 1rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .modal h3 {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .modal h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .modal p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ==================== ANIMATIONS AU SCROLL ==================== */
+    /* Très subtil : juste un fade-in et un léger up — esprit du style suisse */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal-stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.03s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.09s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.21s; }
+    .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.27s; }
+    .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.33s; }
+
+    /* Respect des préférences utilisateur : pas d'animation si demandé */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal,
+      .reveal-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-side {
+        align-items: flex-start;
+      }
+
+      .hero-meta {
+        text-align: left;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .about-grid,
+      .contact-grid,
+      .e6-grid,
+      .veille,
+      .certifs {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .method {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .method-card:nth-child(2) {
+        border-right: none;
+      }
+
+      .method-card:nth-child(-n+2) {
+        border-bottom: 1px solid var(--rule-soft);
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .project-links {
+        align-items: flex-start;
+      }
+
+      .internship {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .github-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .github-stat {
+        border-right: none;
+        border-bottom: 1px solid var(--rule-soft);
+      }
+
+      .github-stat:last-child {
+        border-bottom: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .nav-menu.open {
+        display: flex;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 7rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .method {
+        grid-template-columns: 1fr;
+      }
+
+      .method-card {
+        border-right: none;
+        border-bottom: 1px solid var(--rule-soft);
+      }
+
+      .method-card:last-child {
+        border-bottom: none;
+      }
+
+      .modal {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Rayan Guyot<b>.</b></a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#apropos"><span class="num-prefix">01</span>À propos</a></li>
+        <li><a href="#parcours"><span class="num-prefix">02</span>Parcours</a></li>
+        <li><a href="#competences"><span class="num-prefix">03</span>Compétences</a></li>
+        <li><a href="#e6"><span class="num-prefix">05</span>E6</a></li>
+        <li><a href="#projets"><span class="num-prefix">06</span>Projets</a></li>
+        <li><a href="#contact"><span class="num-prefix">11</span>Contact</a></li>
+        <li>
+          <!-- Bascule entre thème clair et thème sombre -->
+          <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+
+      <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <!-- Bandeau supérieur avec coordonnées brèves alignées en grille -->
+        <div class="hero-line-top reveal">
+          <span>01 / Rayan Guyot / Portfolio</span>
+          <span>BTS SIO · SLAM</span>
+          <span>Toulouse · 2026</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <div class="hero-status">Disponible pour 2026 / 2027</div>
+            <h1 class="hero-name">Rayan<br /><b>Guyot.</b></h1>
+            <p class="hero-pitch">
+              Développeur en formation, passionné par le web et la création d'applications métiers.
+            </p>
+            <p class="hero-objective">
+              Étudiant en BTS SIO option SLAM au lycée Henri Matisse — Objectif : poursuite en licence informatique.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">
+                Me contacter <span class="arrow">→</span>
+              </a>
+              <a href="CV.pdf" class="btn" download>
+                Télécharger le CV <span class="arrow">↓</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-side reveal">
+            <!-- Photo en noir et blanc — devient couleur au survol -->
+            <img src="photo.png" alt="Photo de profil de Rayan Guyot" class="hero-photo" />
+            <div class="hero-meta">
+              <div><b>FR</b> Toulouse</div>
+              <div><b>EN</b> Available</div>
+              <div><b>YR</b> 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== À PROPOS ==================== -->
+    <section id="apropos">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>01</b>À propos</div>
+          <div>
+            <h2 class="section-title">Mon <b>profil.</b></h2>
+            <p class="section-meta">Qui je suis, ce qui m'anime et ce que j'apporte à un projet.</p>
+          </div>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Je m'appelle <strong>Rayan Guyot</strong>, j'ai 19 ans, et je suis étudiant en deuxième année de <strong>BTS SIO option SLAM</strong> (Solutions Logicielles et Applications Métiers) au lycée Henri Matisse à Toulouse.
+            </p>
+            <p>
+              Mon attrait pour l'informatique est né du goût de comprendre comment fonctionnent les choses, puis très vite du plaisir de les construire. Aujourd'hui, je me concentre sur le <strong>développement web</strong> et la <strong>conception d'applications métiers</strong>, deux domaines qui m'ont permis de mettre en pratique mes compétences lors de mes stages.
+            </p>
+            <p>
+              Je cherche à <strong>approfondir mes bases théoriques et techniques</strong> à travers une poursuite d'études en licence d'informatique, tout en gardant un pied dans des projets concrets.
+            </p>
+          </div>
+
+          <div class="qualities reveal-stagger">
+            <div class="quality">
+              <span class="quality-num">01 /</span>
+              <div class="quality-content">
+                <h3>Rigueur</h3>
+                <p>Code propre, documenté, et démarche méthodique pour livrer un travail fiable.</p>
+              </div>
+            </div>
+            <div class="quality">
+              <span class="quality-num">02 /</span>
+              <div class="quality-content">
+                <h3>Curiosité</h3>
+                <p>Veille technologique régulière et envie permanente d'apprendre de nouveaux outils.</p>
+              </div>
+            </div>
+            <div class="quality">
+              <span class="quality-num">03 /</span>
+              <div class="quality-content">
+                <h3>Esprit d'équipe</h3>
+                <p>Communication claire, écoute, et capacité à m'intégrer dans un projet collectif.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PARCOURS SCOLAIRE ==================== -->
+    <section id="parcours">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>02</b>Formation</div>
+          <div>
+            <h2 class="section-title">Parcours <b>scolaire.</b></h2>
+            <p class="section-meta">Du baccalauréat à la suite de mes études.</p>
+          </div>
+        </header>
+
+        <div class="timeline reveal-stagger">
+          <div class="timeline-item">
+            <div class="timeline-date">2023 — 2024</div>
+            <div class="timeline-main">
+              <h3>Baccalauréat technologique</h3>
+              <p>Lycée Henri Matisse, Cugnaux</p>
+            </div>
+            <div></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2024 — 2025</div>
+            <div class="timeline-main">
+              <h3>BTS SIO 1<sup>re</sup> année — option SLAM</h3>
+              <p>Lycée Henri Matisse, Cugnaux</p>
+            </div>
+            <div></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2025 — 2026</div>
+            <div class="timeline-main">
+              <h3>BTS SIO 2<sup>e</sup> année — option SLAM</h3>
+              <p>Lycée Henri Matisse, Cugnaux</p>
+            </div>
+            <div class="timeline-status">En cours</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2026 — +</div>
+            <div class="timeline-main">
+              <h3>L3 Informatique / MIASHS</h3>
+              <p>Toulouse — poursuite d'études envisagée</p>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMPÉTENCES TECHNIQUES ==================== -->
+    <section id="competences">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>03</b>Stack technique</div>
+          <div>
+            <h2 class="section-title">Compétences <b>techniques.</b></h2>
+            <p class="section-meta">Les technologies que j'utilise au quotidien en BTS SIO option SLAM.</p>
+          </div>
+        </header>
+
+        <div class="skills reveal-stagger">
+          <div class="skill-group">
+            <h3><b>01 /</b> Langages</h3>
+            <ul class="skill-list">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>C#</li><li>VBA</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3><b>02 /</b> Bases de données</h3>
+            <ul class="skill-list">
+              <li>MySQL</li><li>SQL</li><li>SQLite</li><li>phpMyAdmin</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3><b>03 /</b> Frameworks &amp; CMS</h3>
+            <ul class="skill-list">
+              <li>PrestaShop</li><li>Wix</li><li>Shopify</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3><b>04 /</b> Outils &amp; DevOps</h3>
+            <ul class="skill-list">
+              <li>Git</li><li>GitHub</li><li>VS Code</li><li>GLPI</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3><b>05 /</b> Systèmes</h3>
+            <ul class="skill-list">
+              <li>Linux</li><li>Windows</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3><b>06 /</b> Méthodes</h3>
+            <ul class="skill-list">
+              <li>Cycle en V</li><li>Agile</li><li>Kanban</li><li>Versioning Git</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MATRICE RÉFÉRENTIEL SLAM ==================== -->
+    <section id="referentiel">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>04</b>Référentiel SLAM</div>
+          <div>
+            <h2 class="section-title">Cartographie des <b>compétences.</b></h2>
+            <p class="section-meta">Les compétences du référentiel BTS SIO mises en regard de mes projets et stages.</p>
+          </div>
+        </header>
+
+        <div class="reveal" style="overflow-x: auto;">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>Compétence — Bloc 2 SLAM</th>
+                <th>Mobilisée dans</th>
+                <th>Niveau</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Concevoir et développer une solution applicative</td>
+                <td>Site bar · PrestaShop · Stage JS Cugnaux</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span class="on"></span></span></td>
+              </tr>
+              <tr>
+                <td>Assurer la maintenance corrective et évolutive</td>
+                <td>Stage JS Cugnaux · Stage IMFT</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span></span></span></td>
+              </tr>
+              <tr>
+                <td>Gérer les données de l'application</td>
+                <td>Stage IMFT (VBA / BDD) · PrestaShop</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span class="on"></span></span></td>
+              </tr>
+              <tr>
+                <td>Analyser les besoins du client / cahier des charges</td>
+                <td>Site bar · Stage JS Cugnaux</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span></span></span></td>
+              </tr>
+              <tr>
+                <td>Travailler en mode projet (Git, méthodes agiles)</td>
+                <td>Ensemble des projets en équipe</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span></span></span></td>
+              </tr>
+              <tr>
+                <td>Participer à la gestion d'un parc informatique</td>
+                <td>Mise en place GLPI</td>
+                <td><span class="level"><span class="on"></span><span class="on"></span><span></span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FICHES DE SITUATION PROFESSIONNELLE E6 ==================== -->
+    <!--
+      IMPORTANT : Cette section est volontairement laissée en placeholder.
+      Pour la compléter, remplis les 2 cartes ci-dessous avec :
+        - Le titre de la situation
+        - Le contexte / la problématique
+        - La solution mise en place
+        - Les compétences du référentiel mobilisées (codes B2.1, etc.)
+        - Le lien vers la fiche PDF (renomme tes PDF en fiche-e6-1.pdf / fiche-e6-2.pdf)
+    -->
+    <section id="e6">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>05</b>Épreuve E6</div>
+          <div>
+            <h2 class="section-title">Fiches de situation <b>professionnelle.</b></h2>
+            <p class="section-meta">Les deux situations présentées au jury de l'épreuve E6 — Parcours de professionnalisation.</p>
+          </div>
+        </header>
+
+        <div class="e6-notice reveal">
+          <b>Section à compléter —</b> remplace le contenu des deux fiches ci-dessous par tes deux fiches de situation professionnelle officielles (contexte, solution, compétences référentielles mobilisées, lien vers le PDF).
+        </div>
+
+        <div class="e6-grid reveal-stagger">
+
+          <article class="fiche-e6">
+            <div class="fiche-number">Fiche n°01</div>
+            <h3 class="fiche-title">[Titre de la situation professionnelle n°1]</h3>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Contexte</div>
+              <p class="fiche-content">
+                [Décris ici le contexte de la situation : entreprise / projet, problématique à résoudre, enjeux pour le commanditaire.]
+              </p>
+            </div>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Solution mise en place</div>
+              <p class="fiche-content">
+                [Décris ici la solution technique que tu as conçue ou mise en place, les technologies utilisées et le résultat obtenu.]
+              </p>
+            </div>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Compétences mobilisées</div>
+              <div class="fiche-competences">
+                <span class="fiche-competence">B2.1 — Concevoir et développer</span>
+                <span class="fiche-competence">B2.2 — Maintenance</span>
+                <span class="fiche-competence">B2.3 — Gérer les données</span>
+              </div>
+            </div>
+
+            <a href="fiche-e6-1.pdf" class="fiche-link" target="_blank" rel="noopener">
+              Consulter la fiche complète (PDF) →
+            </a>
+          </article>
+
+          <article class="fiche-e6">
+            <div class="fiche-number">Fiche n°02</div>
+            <h3 class="fiche-title">[Titre de la situation professionnelle n°2]</h3>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Contexte</div>
+              <p class="fiche-content">
+                [Décris ici le contexte de la situation : entreprise / projet, problématique à résoudre, enjeux pour le commanditaire.]
+              </p>
+            </div>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Solution mise en place</div>
+              <p class="fiche-content">
+                [Décris ici la solution technique que tu as conçue ou mise en place, les technologies utilisées et le résultat obtenu.]
+              </p>
+            </div>
+
+            <div class="fiche-block">
+              <div class="fiche-label">Compétences mobilisées</div>
+              <div class="fiche-competences">
+                <span class="fiche-competence">B2.1 — Concevoir et développer</span>
+                <span class="fiche-competence">B2.4 — Analyser les besoins</span>
+                <span class="fiche-competence">B2.5 — Travail en mode projet</span>
+              </div>
+            </div>
+
+            <a href="fiche-e6-2.pdf" class="fiche-link" target="_blank" rel="noopener">
+              Consulter la fiche complète (PDF) →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJETS ==================== -->
+    <section id="projets">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>06</b>Réalisations</div>
+          <div>
+            <h2 class="section-title">Projets &amp; <b>réalisations.</b></h2>
+            <p class="section-meta">Une sélection de projets réalisés en formation et en autonomie.</p>
+          </div>
+        </header>
+
+        <div class="projects reveal-stagger">
+
+          <article class="project">
+            <div class="project-num">01 /</div>
+            <div class="project-main">
+              <h3>Site vitrine — Bar</h3>
+              <p class="project-desc">
+                Site vitrine présentant la carte, les horaires et les événements d'un bar local. Développé en HTML, CSS et PHP avec une approche responsive.
+              </p>
+              <dl class="project-detail">
+                <dt>Problème</dt><dd>Présence en ligne inexistante</dd>
+                <dt>Solution</dt><dd>Site vitrine léger et responsive</dd>
+              </dl>
+              <div class="project-tags">
+                <span>HTML</span><span>CSS</span><span>PHP</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="Site.pdf" class="project-link" target="_blank" rel="noopener">Documentation ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-num">02 /</div>
+            <div class="project-main">
+              <h3>E-commerce PrestaShop</h3>
+              <p class="project-desc">
+                Mise en place d'une boutique en ligne complète : gestion du catalogue produits, configuration des moyens de paiement, suivi des commandes et personnalisation du thème.
+              </p>
+              <dl class="project-detail">
+                <dt>Problème</dt><dd>Besoin d'une boutique clé en main</dd>
+                <dt>Solution</dt><dd>CMS configuré + thème adapté</dd>
+              </dl>
+              <div class="project-tags">
+                <span>PrestaShop</span><span>PHP</span><span>MySQL</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="PrestaShop.pdf" class="project-link" target="_blank" rel="noopener">Documentation ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-num">03 /</div>
+            <div class="project-main">
+              <h3>Mise en place GLPI</h3>
+              <p class="project-desc">
+                Installation et configuration d'un outil de gestion de parc informatique (GLPI) : inventaire des équipements, gestion des tickets et suivi des incidents.
+              </p>
+              <dl class="project-detail">
+                <dt>Problème</dt><dd>Parc IT non centralisé</dd>
+                <dt>Solution</dt><dd>Inventaire et ticketing centralisés</dd>
+              </dl>
+              <div class="project-tags">
+                <span>GLPI</span><span>Linux</span><span>MySQL</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="GLPI1.pdf" class="project-link" target="_blank" rel="noopener">Partie 1 ↗</a>
+              <a href="GLPI2.pdf" class="project-link" target="_blank" rel="noopener">Partie 2 ↗</a>
+              <a href="GLPI3.pdf" class="project-link" target="_blank" rel="noopener">Partie 3 ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STAGES & EXPÉRIENCES ==================== -->
+    <section id="stages">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>07</b>En entreprise</div>
+          <div>
+            <h2 class="section-title">Stages &amp; <b>expériences.</b></h2>
+            <p class="section-meta">Mes expériences professionnelles en milieu réel, dans le cadre du BTS SIO.</p>
+          </div>
+        </header>
+
+        <div class="internships reveal-stagger">
+
+          <article class="internship">
+            <div class="internship-date">
+              <b>Stage 1</b>
+              02 juin → 04 juillet 2025
+            </div>
+            <div class="internship-main">
+              <h3>JS Cugnaux Football Club</h3>
+              <p class="internship-role">Développement web — création du site officiel</p>
+              <p class="internship-mission">
+                <b>Mission :</b> conception et réalisation du site web officiel du club de football, avec présentation des équipes, du calendrier et des actualités. De l'analyse du besoin auprès du club jusqu'à la mise en ligne.
+              </p>
+              <p class="internship-skills-label">Compétences mobilisées</p>
+              <div class="project-tags">
+                <span>HTML / CSS</span><span>JavaScript</span><span>PHP</span><span>Analyse du besoin</span><span>Autonomie</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="internship">
+            <div class="internship-date">
+              <b>Stage 2</b>
+              12 janvier → 20 février 2026
+            </div>
+            <div class="internship-main">
+              <h3>IMFT — Institut de Mécanique des Fluides de Toulouse</h3>
+              <p class="internship-role">Développement d'applications métiers — automatisation VBA</p>
+              <p class="internship-mission">
+                <b>Mission :</b> conception de logiciels en VBA pour simplifier le remplissage et la gestion de données dans des bases de données métier. Automatisation de processus chronophages effectués jusqu'alors à la main.
+              </p>
+              <p class="internship-skills-label">Compétences mobilisées</p>
+              <div class="project-tags">
+                <span>VBA</span><span>Bases de données</span><span>Automatisation</span><span>Analyse métier</span><span>Travail en équipe</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FORMATIONS & CERTIFICATIONS ==================== -->
+    <section id="certifs">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>08</b>Validations</div>
+          <div>
+            <h2 class="section-title">Certifications &amp; <b>formations.</b></h2>
+            <p class="section-meta">Mes certifications officielles et validations de compétences.</p>
+          </div>
+        </header>
+
+        <div class="certifs reveal-stagger">
+          <div class="certif">
+            <div class="certif-score">
+              <span class="certif-score-label">PIX</span>
+              <span class="certif-score-value">398</span>
+            </div>
+            <div class="certif-info">
+              <h3>Certification PIX</h3>
+              <p class="certif-detail">Lycée Henri Matisse</p>
+              <p class="certif-detail">Passée le 08 janvier 2026</p>
+              <p class="certif-code">P-CQ8DV79D</p>
+            </div>
+          </div>
+
+          <div class="certif">
+            <div class="certif-score">
+              <span class="certif-score-label">PIX</span>
+              <span class="certif-score-value">261</span>
+            </div>
+            <div class="certif-info">
+              <h3>Certification PIX</h3>
+              <p class="certif-detail">Lycée Henri Matisse</p>
+              <p class="certif-detail">Passée le 16 janvier 2024</p>
+              <p class="certif-code">P-9YH34C2M</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VEILLE TECHNOLOGIQUE ==================== -->
+    <section id="veille">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>09</b>Veille</div>
+          <div>
+            <h2 class="section-title">Veille <b>technologique.</b></h2>
+            <p class="section-meta">Ma démarche de veille pour rester à jour sur les évolutions du secteur.</p>
+          </div>
+        </header>
+
+        <div class="veille reveal">
+          <div class="veille-meta">
+            <div>
+              <div class="veille-meta-label">Sujet principal</div>
+              <b>IA générative &amp; e-commerce</b>
+            </div>
+            <div>
+              <div class="veille-meta-label">Mise à jour</div>
+              <b>Hebdomadaire</b>
+            </div>
+            <div>
+              <div class="veille-meta-label">Format</div>
+              <b>Notes + synthèse PDF</b>
+            </div>
+          </div>
+          <div class="veille-content">
+            <h3>L'impact de l'IA générative sur le e-commerce</h3>
+            <p>
+              Comment les modèles d'IA générative (assistants conversationnels, génération automatique de fiches produits, personnalisation des recommandations) transforment-ils l'expérience client et le travail des développeurs sur les plateformes e-commerce comme PrestaShop ou Shopify ? J'analyse les usages actuels, les limites et les enjeux éthiques (données personnelles, biais).
+            </p>
+            <div class="veille-sources">
+              <b>Sources &amp; outils suivis</b>
+              <span>· Blogs spécialisés (Journal du Net, Frenchweb)</span>
+              <span>· Documentation officielle PrestaShop / Shopify</span>
+              <span>· Flux RSS via Feedly</span>
+            </div>
+            <a href="Veille.pdf" class="btn" target="_blank" rel="noopener">
+              Consulter le document de veille <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MÉTHODOLOGIE & PARCOURS DE PROFESSIONNALISATION ==================== -->
+    <section id="methodologie">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>10</b>Réflexion</div>
+          <div>
+            <h2 class="section-title">Parcours de <b>professionnalisation.</b></h2>
+            <p class="section-meta">Ma méthodologie de travail et mon évolution tout au long du BTS.</p>
+          </div>
+        </header>
+
+        <div class="method reveal">
+          <div class="method-card">
+            <div class="method-num">01 /</div>
+            <h3 class="method-title">Versioning</h3>
+            <p class="method-text">Utilisation systématique de Git pour le suivi de versions et la gestion des branches sur GitHub.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">02 /</div>
+            <h3 class="method-title">Organisation</h3>
+            <p class="method-text">Découpage des tâches en sous-objectifs et suivi via tableaux Kanban (Trello, GitHub Projects).</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">03 /</div>
+            <h3 class="method-title">Documentation</h3>
+            <p class="method-text">Rédaction systématique de README, fiches projet et documentations techniques pour la maintenance.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">04 /</div>
+            <h3 class="method-title">Veille</h3>
+            <p class="method-text">Veille hebdomadaire via flux RSS et lecture régulière de blogs techniques pour rester à jour.</p>
+          </div>
+        </div>
+
+        <div class="reflection reveal">
+          <p>
+            Au début du BTS, j'avais surtout des bases en HTML/CSS et une curiosité pour le développement. Aujourd'hui, je suis capable de mener un petit projet web de bout en bout : de l'analyse du besoin client jusqu'à la mise en ligne, en passant par la base de données et le code applicatif.
+          </p>
+          <p>
+            Mes deux stages m'ont fait sortir du cadre purement scolaire : chez JS Cugnaux, j'ai appris à dialoguer avec un commanditaire non technique ; à l'IMFT, j'ai découvert la réalité du développement métier et de l'automatisation de tâches concrètes.
+          </p>
+          <p>
+            Mon objectif est désormais d'<b>élargir mes bases théoriques en licence d'informatique</b>, pour mieux maîtriser l'algorithmique, les fondamentaux des systèmes et l'architecture logicielle — des compétences qui me serviront que je m'oriente vers le développement, la data ou la cybersécurité.
+          </p>
+        </div>
+
+        <!-- Statistiques GitHub (chargées dynamiquement via l'API publique) -->
+        <div class="github-stats reveal" id="githubStats" aria-label="Statistiques GitHub">
+          <div class="github-stat">
+            <div class="github-stat-value" id="ghRepos">—</div>
+            <div class="github-stat-label">Dépôts publics</div>
+          </div>
+          <div class="github-stat">
+            <div class="github-stat-value" id="ghFollowers">—</div>
+            <div class="github-stat-label">Followers</div>
+          </div>
+          <div class="github-stat">
+            <div class="github-stat-value" id="ghYears">—</div>
+            <div class="github-stat-label">Compte créé en</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <div class="section-num"><b>11</b>Contact</div>
+          <div>
+            <h2 class="section-title">Restons en <b>contact.</b></h2>
+            <p class="section-meta">Une question, une proposition de stage ou d'alternance ? Je suis disponible.</p>
+          </div>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal-stagger">
+            <a href="mailto:rayan.guyot13@gmail.com" class="contact-item is-link">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">rayan.guyot13@gmail.com</span>
+              <span class="contact-arrow">→</span>
+            </a>
+
+            <a href="https://github.com/Rayz1331" target="_blank" rel="noopener" class="contact-item is-link">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">@Rayz1331</span>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <div class="contact-item">
+              <span class="contact-label">Lieu</span>
+              <span class="contact-value">Toulouse, France</span>
+              <span></span>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-label">Statut</span>
+              <span class="contact-value">Disponible — Septembre 2026</span>
+              <span></span>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <p class="form-intro">
+              <b>Note —</b> ce formulaire ouvre votre client mail par défaut avec le message pré-rempli.
+            </p>
+
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">
+              Envoyer le message <span class="arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-block">
+          <h4>Portfolio</h4>
+          <p>Rayan Guyot</p>
+          <p>BTS SIO · SLAM · 2026</p>
+        </div>
+        <div class="footer-block">
+          <h4>Contact</h4>
+          <a href="mailto:rayan.guyot13@gmail.com">rayan.guyot13@gmail.com</a>
+          <a href="https://github.com/Rayz1331" target="_blank" rel="noopener">github.com/Rayz1331</a>
+        </div>
+        <div class="footer-block">
+          <h4>Lieu</h4>
+          <p>Toulouse, France</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Rayan Guyot — Tous droits réservés</div>
+        <ul class="footer-links">
+          <li><button type="button" id="openLegal">Mentions légales</button></li>
+          <li><button type="button" id="openA11y">Accessibilité</button></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALE MENTIONS LÉGALES ==================== -->
+  <div class="modal-overlay" id="legalModal" role="dialog" aria-labelledby="legalTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="legalTitle">Mentions légales</h2>
+        <button class="modal-close" id="closeLegal" aria-label="Fermer la fenêtre">×</button>
+      </div>
+
+      <h3>Éditeur du site</h3>
+      <p>
+        Le présent site est édité par <strong>Rayan Guyot</strong>, étudiant en BTS SIO option SLAM à Toulouse, à des fins exclusivement pédagogiques dans le cadre de l'épreuve E6 « Parcours de professionnalisation ».
+        Contact : rayan.guyot13@gmail.com.
+      </p>
+
+      <h3>Hébergement</h3>
+      <p>
+        Site hébergé via GitHub Pages — GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis. À adapter si vous changez d'hébergeur (Netlify, Vercel, OVH, etc.).
+      </p>
+
+      <h3>Propriété intellectuelle</h3>
+      <p>
+        L'ensemble des contenus de ce portfolio (textes, code, images, mises en page) sont la propriété de Rayan Guyot, sauf mention contraire. Toute reproduction ou utilisation sans autorisation préalable est interdite.
+      </p>
+
+      <h3>Données personnelles (RGPD)</h3>
+      <p>
+        Ce site collecte uniquement les données saisies volontairement via le formulaire de contact (nom, email, message). Ces données ne sont stockées sur aucun serveur tiers : le formulaire ouvre directement votre client mail par défaut. Aucun cookie de mesure d'audience ni de traceur publicitaire n'est utilisé.
+      </p>
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données. Pour exercer ces droits, contactez : rayan.guyot13@gmail.com.
+      </p>
+
+      <h3>Cookies</h3>
+      <p>
+        Ce site n'utilise qu'un seul stockage local pour mémoriser votre préférence de thème (clair / sombre). Aucune information personnelle n'y est associée.
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== MODALE ACCESSIBILITÉ ==================== -->
+  <div class="modal-overlay" id="a11yModal" role="dialog" aria-labelledby="a11yTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="a11yTitle">Accessibilité</h2>
+        <button class="modal-close" id="closeA11y" aria-label="Fermer la fenêtre">×</button>
+      </div>
+
+      <h3>Engagement</h3>
+      <p>
+        Ce portfolio a été pensé pour être accessible au plus grand nombre, en s'inspirant des recommandations du Référentiel Général d'Amélioration de l'Accessibilité (RGAA) et des WCAG 2.1 niveau AA.
+      </p>
+
+      <h3>Mesures mises en place</h3>
+      <p>
+        · Balises HTML sémantiques (header, main, section, article, nav, footer)<br />
+        · Attributs <code>alt</code> sur les images informatives<br />
+        · Contrastes vérifiés entre les couleurs de texte et de fond<br />
+        · Navigation au clavier possible avec indicateurs de focus visibles<br />
+        · Respect de la préférence utilisateur <code>prefers-reduced-motion</code><br />
+        · Structure de titres hiérarchisée (h1, h2, h3)
+      </p>
+
+      <h3>Améliorations à venir</h3>
+      <p>
+        Une déclaration RGAA complète et un audit d'accessibilité sont prévus dans une prochaine itération du portfolio.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // ==================== SCRIPTS JAVASCRIPT ====================
+    // ============================================================
+
+    /* ---------- 1. Bascule du thème clair / sombre ---------- */
+    // Le thème choisi est stocké dans localStorage pour persister entre les visites.
+    // Par défaut : thème clair (esprit Suisse / Helvetica)
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    /* ---------- 2. Menu mobile (hamburger) ---------- */
+    const burger = document.getElementById('navBurger');
+    const navMenu = document.getElementById('navMenu');
+
+    burger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Fermeture du menu quand on clique sur un lien
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- 3. Animations au scroll (Intersection Observer) ---------- */
+    // On observe les éléments .reveal et .reveal-stagger,
+    // et on leur ajoute .visible quand ils entrent dans le viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+      observer.observe(el);
+    });
+
+    /* ---------- 4. Gestion des modales (mentions légales + accessibilité) ---------- */
+    const legalModal = document.getElementById('legalModal');
+    const a11yModal = document.getElementById('a11yModal');
+
+    function openModal(modal) {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('openLegal').addEventListener('click', () => openModal(legalModal));
+    document.getElementById('openA11y').addEventListener('click', () => openModal(a11yModal));
+    document.getElementById('closeLegal').addEventListener('click', () => closeModal(legalModal));
+    document.getElementById('closeA11y').addEventListener('click', () => closeModal(a11yModal));
+
+    // Fermeture en cliquant en dehors du contenu
+    [legalModal, a11yModal].forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+
+    // Fermeture avec la touche Échap
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal(legalModal);
+        closeModal(a11yModal);
+      }
+    });
+
+    /* ---------- 5. Formulaire de contact (mailto) ---------- */
+    // Le formulaire compose un email pré-rempli via mailto:
+    // Pas de backend nécessaire, donc pas de risques RGPD côté serveur.
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      if (!name || !email || !msg) {
+        alert('Merci de remplir tous les champs.');
+        return;
+      }
+
+      const subject = `Contact depuis le portfolio — ${name}`;
+      const body = `Bonjour Rayan,\n\n${msg}\n\n— ${name} (${email})`;
+      window.location.href = `mailto:rayan.guyot13@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    /* ---------- 6. Statistiques GitHub via API publique ---------- */
+    // On appelle l'API GitHub publique (sans authentification) pour récupérer
+    // quelques infos sur le compte. Ça illustre une consommation d'API REST.
+    (async function loadGitHubStats() {
+      try {
+        const response = await fetch('https://api.github.com/users/Rayz1331');
+        if (!response.ok) throw new Error('GitHub API indisponible');
+        const data = await response.json();
+
+        document.getElementById('ghRepos').textContent = data.public_repos ?? '—';
+        document.getElementById('ghFollowers').textContent = data.followers ?? '—';
+        const year = new Date(data.created_at).getFullYear();
+        document.getElementById('ghYears').textContent = year || '—';
+      } catch (err) {
+        console.warn('Impossible de charger les stats GitHub :', err);
+      }
+    })();
+  </script>
+</body>
+</html>
