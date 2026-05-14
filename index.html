@@ -683,93 +683,6 @@
       background-color: var(--accent);
     }
 
-    /* ==================== FICHES E6 ==================== */
-    .e6-notice {
-      padding: 1.25rem 1.5rem;
-      background-color: var(--accent-soft);
-      border-left: 2px solid var(--accent);
-      margin-bottom: 3rem;
-      font-size: 0.92rem;
-      color: var(--text);
-    }
-
-    .e6-notice b {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .e6-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4rem;
-    }
-
-    .fiche-e6 {
-      display: flex;
-      flex-direction: column;
-      padding-top: 1.5rem;
-      border-top: 2px solid var(--rule);
-    }
-
-    .fiche-number {
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .fiche-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.015em;
-    }
-
-    .fiche-block {
-      margin-bottom: 1.25rem;
-    }
-
-    .fiche-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .fiche-content {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .fiche-competences {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.8rem;
-    }
-
-    .fiche-competence {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text);
-      padding-bottom: 2px;
-      border-bottom: 1px solid var(--accent);
-    }
-
-    .fiche-link {
-      margin-top: auto;
-      padding-top: 2rem;
-      font-size: 0.92rem;
-      font-weight: 500;
-      border-bottom: 1.5px solid var(--accent);
-      color: var(--text);
-      width: fit-content;
-    }
-
     /* ==================== PROJETS ==================== */
     /* Format liste éditoriale : numéro, titre, description et tags */
     .projects {
@@ -1518,7 +1431,6 @@
 
       .about-grid,
       .contact-grid,
-      .e6-grid,
       .veille,
       .certifs {
         grid-template-columns: 1fr;
@@ -1652,9 +1564,8 @@
         <li><a href="#apropos"><span class="num-prefix">01</span>À propos</a></li>
         <li><a href="#parcours"><span class="num-prefix">02</span>Parcours</a></li>
         <li><a href="#competences"><span class="num-prefix">03</span>Compétences</a></li>
-        <li><a href="#e6"><span class="num-prefix">05</span>E6</a></li>
-        <li><a href="#projets"><span class="num-prefix">06</span>Projets</a></li>
-        <li><a href="#contact"><span class="num-prefix">10</span>Contact</a></li>
+        <li><a href="#projets"><span class="num-prefix">05</span>Projets</a></li>
+        <li><a href="#contact"><span class="num-prefix">09</span>Contact</a></li>
         <li>
           <!-- Bascule entre thème clair et thème sombre -->
           <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
@@ -1931,105 +1842,11 @@
       </div>
     </section>
 
-    <!-- ==================== FICHES DE SITUATION PROFESSIONNELLE E6 ==================== -->
-    <!--
-      IMPORTANT : Cette section est volontairement laissée en placeholder.
-      Pour la compléter, remplis les 2 cartes ci-dessous avec :
-        - Le titre de la situation
-        - Le contexte / la problématique
-        - La solution mise en place
-        - Les compétences du référentiel mobilisées (codes B2.1, etc.)
-        - Le lien vers la fiche PDF (renomme tes PDF en fiche-e6-1.pdf / fiche-e6-2.pdf)
-    -->
-    <section id="e6">
-      <div class="container">
-        <header class="section-head reveal">
-          <div class="section-num"><b>05</b>Épreuve E6</div>
-          <div>
-            <h2 class="section-title">Fiches de situation <b>professionnelle.</b></h2>
-            <p class="section-meta">Les deux situations présentées au jury de l'épreuve E6 — Parcours de professionnalisation.</p>
-          </div>
-        </header>
-
-        <div class="e6-notice reveal">
-          <b>Section à compléter —</b> remplace le contenu des deux fiches ci-dessous par tes deux fiches de situation professionnelle officielles (contexte, solution, compétences référentielles mobilisées, lien vers le PDF).
-        </div>
-
-        <div class="e6-grid reveal-stagger">
-
-          <article class="fiche-e6">
-            <div class="fiche-number">Fiche n°01</div>
-            <h3 class="fiche-title">[Titre de la situation professionnelle n°1]</h3>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Contexte</div>
-              <p class="fiche-content">
-                [Décris ici le contexte de la situation : entreprise / projet, problématique à résoudre, enjeux pour le commanditaire.]
-              </p>
-            </div>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Solution mise en place</div>
-              <p class="fiche-content">
-                [Décris ici la solution technique que tu as conçue ou mise en place, les technologies utilisées et le résultat obtenu.]
-              </p>
-            </div>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Compétences mobilisées</div>
-              <div class="fiche-competences">
-                <span class="fiche-competence">B2.1 — Concevoir et développer</span>
-                <span class="fiche-competence">B2.2 — Maintenance</span>
-                <span class="fiche-competence">B2.3 — Gérer les données</span>
-              </div>
-            </div>
-
-            <a href="fiche-e6-1.pdf" class="fiche-link" target="_blank" rel="noopener">
-              Consulter la fiche complète (PDF) →
-            </a>
-          </article>
-
-          <article class="fiche-e6">
-            <div class="fiche-number">Fiche n°02</div>
-            <h3 class="fiche-title">[Titre de la situation professionnelle n°2]</h3>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Contexte</div>
-              <p class="fiche-content">
-                [Décris ici le contexte de la situation : entreprise / projet, problématique à résoudre, enjeux pour le commanditaire.]
-              </p>
-            </div>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Solution mise en place</div>
-              <p class="fiche-content">
-                [Décris ici la solution technique que tu as conçue ou mise en place, les technologies utilisées et le résultat obtenu.]
-              </p>
-            </div>
-
-            <div class="fiche-block">
-              <div class="fiche-label">Compétences mobilisées</div>
-              <div class="fiche-competences">
-                <span class="fiche-competence">B2.1 — Concevoir et développer</span>
-                <span class="fiche-competence">B2.4 — Analyser les besoins</span>
-                <span class="fiche-competence">B2.5 — Travail en mode projet</span>
-              </div>
-            </div>
-
-            <a href="fiche-e6-2.pdf" class="fiche-link" target="_blank" rel="noopener">
-              Consulter la fiche complète (PDF) →
-            </a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
     <!-- ==================== PROJETS ==================== -->
     <section id="projets">
       <div class="container">
         <header class="section-head reveal">
-          <div class="section-num"><b>06</b>Réalisations</div>
+          <div class="section-num"><b>05</b>Réalisations</div>
           <div>
             <h2 class="section-title">Projets &amp; <b>réalisations.</b></h2>
             <p class="section-meta">Une sélection de projets réalisés en formation et en autonomie.</p>
@@ -2108,7 +1925,7 @@
     <section id="stages">
       <div class="container">
         <header class="section-head reveal">
-          <div class="section-num"><b>07</b>En entreprise</div>
+          <div class="section-num"><b>06</b>En entreprise</div>
           <div>
             <h2 class="section-title">Stages &amp; <b>expériences.</b></h2>
             <p class="section-meta">Mes expériences professionnelles en milieu réel, dans le cadre du BTS SIO.</p>
@@ -2161,7 +1978,7 @@
     <section id="certifs">
       <div class="container">
         <header class="section-head reveal">
-          <div class="section-num"><b>08</b>Validations</div>
+          <div class="section-num"><b>07</b>Validations</div>
           <div>
             <h2 class="section-title">Certifications &amp; <b>formations.</b></h2>
             <p class="section-meta">Mes certifications officielles et validations de compétences.</p>
@@ -2202,7 +2019,7 @@
     <section id="veille">
       <div class="container">
         <header class="section-head reveal">
-          <div class="section-num"><b>09</b>Veille</div>
+          <div class="section-num"><b>08</b>Veille</div>
           <div>
             <h2 class="section-title">Veille <b>technologique.</b></h2>
             <p class="section-meta">Ma démarche de veille pour rester à jour sur les évolutions du secteur.</p>
@@ -2247,7 +2064,7 @@
     <section id="contact">
       <div class="container">
         <header class="section-head reveal">
-          <div class="section-num"><b>10</b>Contact</div>
+          <div class="section-num"><b>09</b>Contact</div>
           <div>
             <h2 class="section-title">Restons en <b>contact.</b></h2>
             <p class="section-meta">Une question, une proposition de stage ou d'alternance ? Je suis disponible.</p>
