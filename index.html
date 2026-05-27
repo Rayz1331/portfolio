@@ -1550,6 +1550,286 @@
         padding: 1.75rem;
       }
     }
+
+    /* ==================== AJOUTS : DENSIFICATION VISUELLE ==================== */
+
+    /* --- Bandeau de chiffres clés (sous le hero) --- */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-stat {
+      padding: 1.5rem 1.25rem 0;
+      border-right: 1px solid var(--rule-soft);
+    }
+
+    .hero-stat:last-child {
+      border-right: none;
+    }
+
+    .hero-stat-value {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .hero-stat-value .unit {
+      color: var(--accent);
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* --- Compétences phares avec barres de niveau --- */
+    .skill-featured {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 4rem;
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .skill-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skill-bar-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .skill-bar-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .skill-bar-pct {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .skill-bar-track {
+      height: 4px;
+      background-color: var(--rule-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: var(--accent);
+      width: 0;                       /* animé au scroll via .visible */
+      transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible .skill-bar-fill,
+    .reveal-stagger.visible .skill-bar-fill {
+      width: var(--level);            /* la largeur cible est définie en HTML */
+    }
+
+    /* --- Cartes projets avec aperçu visuel --- */
+    .projects-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .pcard {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--rule);
+      padding-top: 1.5rem;
+    }
+
+    /* La 3e carte prend toute la largeur (mise en page éditoriale asymétrique) */
+    .pcard.pcard-wide {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .pcard-num {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pcard-visual {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-soft);
+      border: 1px solid var(--rule-soft);
+      aspect-ratio: 16 / 10;
+      margin-bottom: 1.5rem;
+    }
+
+    .pcard.pcard-wide .pcard-visual {
+      margin-bottom: 0;
+      order: 2;                        /* l'image à droite sur la carte large */
+    }
+
+    .pcard-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(100%) contrast(1.02);
+      transition: filter 0.4s ease, transform 0.5s ease;
+    }
+
+    .pcard:hover .pcard-visual img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    /* Petit badge type au survol de l'image */
+    .pcard-visual-tag {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background-color: var(--bg);
+      color: var(--text);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--rule-soft);
+    }
+
+    .pcard-body h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .pcard-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .pcard-detail {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0.4rem 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pcard-detail dt {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .pcard-detail dd {
+      color: var(--text-muted);
+    }
+
+    .pcard-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .pcard-tags span::before {
+      content: '·';
+      color: var(--accent);
+      margin-right: 0.45rem;
+      font-weight: 700;
+    }
+
+    .pcard-tags span:first-child::before {
+      display: none;
+    }
+
+    .pcard-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule-soft);
+      font-size: 0.88rem;
+    }
+
+    .pcard-link {
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      font-weight: 500;
+    }
+
+    /* --- Responsive pour les ajouts --- */
+    @media (max-width: 960px) {
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-stat:nth-child(2) {
+        border-right: none;
+      }
+      .hero-stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--rule-soft);
+        padding-bottom: 1.5rem;
+      }
+      .skill-featured {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .projects-cards {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .pcard.pcard-wide {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .pcard.pcard-wide .pcard-visual {
+        order: 0;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-stat-value {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 
@@ -1625,6 +1905,26 @@
               <div><b>FR</b> Toulouse</div>
               <div><b>YR</b> 2026</div>
             </div>
+          </div>
+        </div>
+
+        <!-- Bandeau de chiffres clés : densifie le bas du hero et résume le profil -->
+        <div class="hero-stats reveal-stagger">
+          <div class="hero-stat">
+            <div class="hero-stat-value">2<span class="unit">+</span></div>
+            <div class="hero-stat-label">Années de formation</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">2</div>
+            <div class="hero-stat-label">Stages en entreprise</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">5<span class="unit">+</span></div>
+            <div class="hero-stat-label">Projets réalisés</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">398</div>
+            <div class="hero-stat-label">Certification PIX</div>
           </div>
         </div>
       </div>
@@ -1743,6 +2043,52 @@
           </div>
         </header>
 
+        <!-- Compétences phares avec niveau visuel (les barres s'animent au scroll) -->
+        <div class="skill-featured reveal">
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">HTML / CSS</span>
+              <span class="skill-bar-pct">Avancé</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 90%;"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">PHP</span>
+              <span class="skill-bar-pct">Intermédiaire +</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 75%;"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">JavaScript</span>
+              <span class="skill-bar-pct">Intermédiaire</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 65%;"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">SQL / MySQL</span>
+              <span class="skill-bar-pct">Intermédiaire +</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 78%;"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">C#</span>
+              <span class="skill-bar-pct">Intermédiaire</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 60%;"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-head">
+              <span class="skill-bar-name">VBA</span>
+              <span class="skill-bar-pct">Intermédiaire</span>
+            </div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--level: 62%;"></div></div>
+          </div>
+        </div>
+
         <div class="skills reveal-stagger">
           <div class="skill-group">
             <h3><b>01 /</b> Langages</h3>
@@ -1846,67 +2192,82 @@
           </div>
         </header>
 
-        <div class="projects reveal-stagger">
+        <div class="projects-cards reveal-stagger">
 
-          <article class="project">
-            <div class="project-num">01 /</div>
-            <div class="project-main">
-              <h3>Site vitrine — Bar</h3>
-              <p class="project-desc">
-                Site vitrine présentant la carte, les horaires et les événements d'un bar local. Développé en HTML, CSS et PHP avec une approche responsive.
-              </p>
-              <dl class="project-detail">
-                <dt>Problème</dt><dd>Présence en ligne inexistante</dd>
-                <dt>Solution</dt><dd>Site vitrine léger et responsive</dd>
-              </dl>
-              <div class="project-tags">
-                <span>HTML</span><span>CSS</span><span>PHP</span>
-              </div>
+          <!-- Projet 1 : Site bar (avec capture réelle) -->
+          <article class="pcard">
+            <div class="pcard-num">01 /</div>
+            <div class="pcard-visual">
+              <span class="pcard-visual-tag">Site web</span>
+              <img src="projet-site.jpg" alt="Capture d'écran du site vitrine du bar" loading="lazy" />
             </div>
-            <div class="project-links">
-              <a href="Site.pdf" class="project-link" target="_blank" rel="noopener">Documentation ↗</a>
+            <div class="pcard-body">
+              <h3>Site vitrine — Bar</h3>
+              <p class="pcard-desc">
+                Site vitrine immersif présentant l'univers, la carte et les activités d'un bar à thème, avec un mini-quiz interactif. Développé en HTML, CSS et PHP avec une approche responsive.
+              </p>
+              <dl class="pcard-detail">
+                <dt>Problème</dt><dd>Présence en ligne inexistante</dd>
+                <dt>Solution</dt><dd>Site vitrine léger, thématisé et responsive</dd>
+              </dl>
+              <div class="pcard-tags">
+                <span>HTML</span><span>CSS</span><span>PHP</span><span>Responsive</span>
+              </div>
+              <div class="pcard-links">
+                <a href="Site.pdf" class="pcard-link" target="_blank" rel="noopener">Documentation ↗</a>
+              </div>
             </div>
           </article>
 
-          <article class="project">
-            <div class="project-num">02 /</div>
-            <div class="project-main">
+          <!-- Projet 2 : E-commerce PrestaShop (avec capture réelle) -->
+          <article class="pcard">
+            <div class="pcard-num">02 /</div>
+            <div class="pcard-visual">
+              <span class="pcard-visual-tag">E-commerce</span>
+              <img src="projet-prestashop.jpg" alt="Capture d'écran de la boutique PrestaShop" loading="lazy" />
+            </div>
+            <div class="pcard-body">
               <h3>E-commerce PrestaShop</h3>
-              <p class="project-desc">
-                Mise en place d'une boutique en ligne complète : gestion du catalogue produits, configuration des moyens de paiement, suivi des commandes et personnalisation du thème.
+              <p class="pcard-desc">
+                Boutique en ligne complète « Que du Geek » : catalogue de composants informatiques, catégorisation, fiches produits, moyens de paiement et personnalisation du thème.
               </p>
-              <dl class="project-detail">
+              <dl class="pcard-detail">
                 <dt>Problème</dt><dd>Besoin d'une boutique clé en main</dd>
                 <dt>Solution</dt><dd>CMS configuré + thème adapté</dd>
               </dl>
-              <div class="project-tags">
+              <div class="pcard-tags">
                 <span>PrestaShop</span><span>PHP</span><span>MySQL</span>
               </div>
-            </div>
-            <div class="project-links">
-              <a href="PrestaShop.pdf" class="project-link" target="_blank" rel="noopener">Documentation ↗</a>
+              <div class="pcard-links">
+                <a href="PrestaShop.pdf" class="pcard-link" target="_blank" rel="noopener">Documentation ↗</a>
+              </div>
             </div>
           </article>
 
-          <article class="project">
-            <div class="project-num">03 /</div>
-            <div class="project-main">
+          <!-- Projet 3 : GLPI (carte large, image à droite) -->
+          <article class="pcard pcard-wide">
+            <div class="pcard-visual">
+              <span class="pcard-visual-tag">Gestion de parc</span>
+              <img src="projet-glpi.jpg" alt="Tableau de bord GLPI de gestion de parc informatique" loading="lazy" />
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-num">03 /</div>
               <h3>Mise en place GLPI</h3>
-              <p class="project-desc">
-                Installation et configuration d'un outil de gestion de parc informatique (GLPI) : inventaire des équipements, gestion des tickets et suivi des incidents.
+              <p class="pcard-desc">
+                Installation et configuration d'un outil de gestion de parc informatique : inventaire des équipements, tableau de bord, gestion des tickets et suivi des incidents.
               </p>
-              <dl class="project-detail">
+              <dl class="pcard-detail">
                 <dt>Problème</dt><dd>Parc IT non centralisé</dd>
                 <dt>Solution</dt><dd>Inventaire et ticketing centralisés</dd>
               </dl>
-              <div class="project-tags">
+              <div class="pcard-tags">
                 <span>GLPI</span><span>Linux</span><span>MySQL</span>
               </div>
-            </div>
-            <div class="project-links">
-              <a href="GLPI1.pdf" class="project-link" target="_blank" rel="noopener">Partie 1 ↗</a>
-              <a href="GLPI2.pdf" class="project-link" target="_blank" rel="noopener">Partie 2 ↗</a>
-              <a href="GLPI3.pdf" class="project-link" target="_blank" rel="noopener">Partie 3 ↗</a>
+              <div class="pcard-links">
+                <a href="GLPI1.pdf" class="pcard-link" target="_blank" rel="noopener">Partie 1 ↗</a>
+                <a href="GLPI2.pdf" class="pcard-link" target="_blank" rel="noopener">Partie 2 ↗</a>
+                <a href="GLPI3.pdf" class="pcard-link" target="_blank" rel="noopener">Partie 3 ↗</a>
+              </div>
             </div>
           </article>
 
