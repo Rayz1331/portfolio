@@ -1830,6 +1830,61 @@
         font-size: 2rem;
       }
     }
+
+    /* --- Placeholder visuel pour les cartes projets sans capture d'écran --- */
+    /* Affiche un grand chiffre stylisé avec un fond gris clair et un motif de grille subtil */
+    .pcard-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-soft);
+      background-image:
+        linear-gradient(var(--rule-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rule-soft) 1px, transparent 1px);
+      background-size: 32px 32px;
+      position: relative;
+    }
+
+    .pcard-placeholder-num {
+      font-size: 5.5rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: var(--text);
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pcard-placeholder-num::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 4px;
+      background-color: var(--accent);
+      margin: 0.8rem auto 0;
+    }
+
+    /* --- Lien de téléchargement du rapport dans les cartes stages --- */
+    .internship-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--rule-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      border-bottom: 1.5px solid var(--accent);
+      width: fit-content;
+      transition: gap 0.2s ease, color 0.2s ease;
+      padding-bottom: 2px;
+    }
+
+    .internship-download:hover {
+      color: var(--accent);
+      gap: 0.7rem;
+    }
   </style>
 </head>
 
@@ -2244,14 +2299,64 @@
             </div>
           </article>
 
-          <!-- Projet 3 : GLPI (carte large, image à droite) -->
+          <!-- Projet 3 : Projet PHP (placeholder en attendant une capture) -->
+          <article class="pcard">
+            <div class="pcard-num">03 /</div>
+            <div class="pcard-visual pcard-placeholder">
+              <span class="pcard-visual-tag">Application web</span>
+              <div class="pcard-placeholder-num">03</div>
+            </div>
+            <div class="pcard-body">
+              <h3>Application web — PHP</h3>
+              <p class="pcard-desc">
+                Application web développée en PHP avec gestion de base de données MySQL. Conception du modèle de données, développement des composants d'accès aux données et de l'interface utilisateur.
+              </p>
+              <dl class="pcard-detail">
+                <dt>Problème</dt><dd>À compléter selon le contexte</dd>
+                <dt>Solution</dt><dd>Application PHP / MySQL sur mesure</dd>
+              </dl>
+              <div class="pcard-tags">
+                <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span>
+              </div>
+              <div class="pcard-links">
+                <a href="ProjetPHP.pdf" class="pcard-link" target="_blank" rel="noopener">Documentation ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 4 : Projet Android (placeholder en attendant une capture) -->
+          <article class="pcard">
+            <div class="pcard-num">04 /</div>
+            <div class="pcard-visual pcard-placeholder">
+              <span class="pcard-visual-tag">Application mobile</span>
+              <div class="pcard-placeholder-num">04</div>
+            </div>
+            <div class="pcard-body">
+              <h3>Application mobile — Android</h3>
+              <p class="pcard-desc">
+                Application mobile native pour Android. Conception de l'interface, développement de la logique métier et persistance des données locales.
+              </p>
+              <dl class="pcard-detail">
+                <dt>Problème</dt><dd>À compléter selon le contexte</dd>
+                <dt>Solution</dt><dd>Application Android native</dd>
+              </dl>
+              <div class="pcard-tags">
+                <span>Android</span><span>Java</span><span>SQLite</span><span>XML</span>
+              </div>
+              <div class="pcard-links">
+                <a href="Android.pdf" class="pcard-link" target="_blank" rel="noopener">Documentation ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 5 : GLPI (carte large, image à droite) -->
           <article class="pcard pcard-wide">
             <div class="pcard-visual">
               <span class="pcard-visual-tag">Gestion de parc</span>
               <img src="projet-glpi.jpg" alt="Tableau de bord GLPI de gestion de parc informatique" loading="lazy" />
             </div>
             <div class="pcard-body">
-              <div class="pcard-num">03 /</div>
+              <div class="pcard-num">05 /</div>
               <h3>Mise en place GLPI</h3>
               <p class="pcard-desc">
                 Installation et configuration d'un outil de gestion de parc informatique : inventaire des équipements, tableau de bord, gestion des tickets et suivi des incidents.
@@ -2303,6 +2408,9 @@
               <div class="project-tags">
                 <span>HTML / CSS</span><span>JavaScript</span><span>PHP</span><span>Analyse du besoin</span><span>Autonomie</span>
               </div>
+              <a href="Stage1.pdf" class="internship-download" target="_blank" rel="noopener">
+                Télécharger le rapport de stage ↓
+              </a>
             </div>
           </article>
 
@@ -2321,6 +2429,9 @@
               <div class="project-tags">
                 <span>VBA</span><span>Bases de données</span><span>Automatisation</span><span>Analyse métier</span><span>Travail en équipe</span>
               </div>
+              <a href="Stage2.pdf" class="internship-download" target="_blank" rel="noopener">
+                Télécharger le rapport de stage ↓
+              </a>
             </div>
           </article>
 
